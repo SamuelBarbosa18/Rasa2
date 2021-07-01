@@ -1,0 +1,184 @@
+version: "2.0"
+nlu:
+- intent: saudação
+  examples: |
+    - oi
+    - Olá
+    - Oioi
+    - Eai
+    - Bom dia
+    - Boa tarde
+    - Opa
+    - Boa noite
+- intent: adeus
+  examples: |
+    - Tchau
+    - Tchau tchau
+    - Até logo
+    - Te vejo mais tarde
+    - Até
+    - Tchauzinho
+    - Vai com Deus
+    - Tenha um bom dia
+    - Te vejo por aí
+    - Flw
+    - Flws
+- intent: afirmação
+  examples: |
+    - Sim
+    - S
+    - Verdade
+    - Com certeza
+    - Parece bom
+    - correto
+    - porque não
+    - ok ótimo
+    - sim eu faço
+    - muito bom
+    - pode apostar
+    - ótimo
+    - mais ou menos
+    - sim
+- intent: negação
+  examples: |
+    - Não
+    - N
+    - Nunca
+    - Acho que não
+    - Não gostei
+    - De jeito nenhum
+    - Na verdade não
+    - absolutamente não
+    - não obrigado
+    - não fin nada
+    - não fiz
+    - poderia ter sido melhor
+    - nope
+    - nada bem
+- intent: informação
+  examples: |
+    - um total de [8 horas]("sono")
+    - Apenas [4 horas]("sono")
+    - Umas [6 horas]("sono")
+    - estresse [baixo]("stress")
+    - estresse [médio]("stress")
+    - estresse [alto]("stress")
+    - sim, eu fui [correr]("exercício")
+    - Sim, eu fui para uma [corrida]("exercício")
+    - uh huh uma hora de [ioga]("exercício")
+    - sim, eu fui fazer uma [caminhada]("exercício")
+    - Sim, levei o cachorro para uma [caminhada]("exercício")
+    - Sim, eu joguei [tênis]("exercício")
+    - Eu fui [nadar]("exercício")
+    - Fiz uma [aula de spin]("exercício")
+    - Fiz algum [boxe]("exercício")
+    - [escalada]("exercício")
+    - jogou um pouco [basquete]("exercício")
+    - jogou [futebol]("exercício")
+    - Eu fiz um vídeo [treino]("exercício")
+    - Eu quero acordar cedo e ir correr
+    - Seja mais paciente com minha família
+    - Tente ser um amigo melhor
+    - Certifique-se de comer melhor amanhã
+    - comer menos junk food
+    - coma melhor
+    - gasta menos tempo no meu telefone
+    - não procrastine
+    - Vá para a cama mais cedo
+    - Não fique acordado até tarde
+    - tente arranjar algum tempo para meditar
+    - eu comia muito saudável no geral
+    - muitas frutas e vegetais
+    - Eu comi uma salada
+    - muitos lanches
+    - muitos doces
+    - muita comida lixo
+    - muitos carboidratos
+    - muita comida gordurosa
+    - Faça mais exercícios
+- intent: transbordo
+  examples: |
+    - Pare
+    - Não é isso que eu quero
+    - Você não está me ajudando
+    - Não está ajudando
+    - Quantos anos você tem
+    - quero pedir uma pizza
+    - Me fale sobre o clima
+    - Isso não está funcionando
+    - Ja te falei isso
+    - Não estou gostando disso
+    - Eu não quero te falar isso
+    - Não é da sua conta
+    - Não está certo isso
+    - Para de me perguntar
+    - Deixa pra lá
+    - Quero fazer algo a mais
+    - Eu mudei de ideia
+- intent: bom_humor
+  examples: |
+    - Perfeito
+    - Bom
+    - Ótimo
+    - Me sinto com um rei
+    - Maravilhoso
+    - Estou me sentindo muito bem
+    - Estou bem
+    - Estou sensacional
+    - Sinto que posso salvar o mundo
+    - Super animado
+    - Extremamente bom
+    - Tão bom
+    - Tão perfeito
+- intent: mau_humor
+  examples: |
+    - Meu dia foi horrivel
+    - Estou triste
+    - Não me sinto tão bem
+    - Estou desapontado
+    - Super triste
+    - Estou tão triste
+    - Triste
+    - Muito triste
+    - Infeliz
+    - Nada bom
+    - Não muito bem
+    - Extremamente triste
+- intent: pergunta_bot
+  examples: |
+    - Você é um bot?
+    - Você é humano?
+    - Estou falando com um bot?
+    - Estou falando com um humano?
+- intent: pergunta_stress_alto
+  examples: |
+    - O que fazer quando estou muito estressado?
+    - Como posso abaixar meu estresse?
+    - De quais maneiras posso abaixar meu estresse?
+    - O que posso fazer pra relaxar?
+    - Quais coisas posso fazer para abaixar meu estresse?
+    - estou um pouco estrssado
+- intent: pergunta_comida_saudavel
+  examples: |
+    - O que é considerado uma dieta saudavel?
+    - O que é considerado uma boa dieta?
+    - Como eu sigo uma boa dieta?
+    - Me de um exemplo de uma boa dieta?
+    - Como posso comer melhor?
+    - como como saudavel
+- intent: pergunta_exercicio
+  examples: |
+    - Me fale exercicios para pessoas que estão nos 30?
+    - O quanto de exercicio eu devo fazer?
+    - Quanto de exercicio é recomendado?
+    - Caminhar uma vez por dia é suficiente?
+    - O quanto de exercicio eu devo fazer por dia?
+    - Quantas vezes por semana tenho que ir na academia?
+    - intent: pergunta_exercicio
+- intent: agradecimento
+  examples: |
+    - Ok, obrigado
+    - Obrigado
+    - obrigado, tchau
+    - certo, obrigado
+    - Valeu

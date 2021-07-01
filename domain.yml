@@ -1,0 +1,136 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- saudação
+- stop
+- afirmação
+- pergunta_stress_alto
+- pergunta_comida_saudavel
+- adeus
+- negação
+- bom_humor
+- mau_humor
+- pergunta_bot
+- pergunta_exercicio
+- informação
+- transbordo
+- agradecimento
+entities:
+- exercicio
+- sono
+- stress
+slots:
+  confirmar_exercicio:
+    type: text
+    influence_conversation: false
+  exercicio:
+    type: text
+    influence_conversation: false
+  dormir:
+    type: text
+    influence_conversation: false
+  dieta:
+    type: text
+    influence_conversation: false
+  stress:
+    type: text
+    influence_conversation: false
+  objetivo:
+    type: text
+    influence_conversation: false
+responses:
+  utter_cheer_up:
+  - text: 'Aqui está uma imagem pra te deixar feliz:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: isso te ajudou?
+  utter_dieta_info:
+  - text: Uma dieta saudável inclui frutas e vegetais, grãos inteiros, laticínios, proteínas magras e gorduras vegetais. Embora haja espaço para guloseimas em uma dieta saudável, o açúcar adicionado deve ser consumido com moderação. Procure uma variedade de alimentos e equilíbrio
+  utter_happy:
+  - text: Ótimo, continue assim!
+  utter_goodbye:
+  - text: Tchau
+  utter_greet:
+  - text: Oi! é hora de sua verificação diária de bem-estar, monitorar hábitos saudáveis é uma ótima maneira de medir seu progresso ao longo do tempo. Você gostaria de responder a algumas perguntas sobre sua saúde?
+  utter_iamabot:
+  - text: Sou um bot feito com o Rasa.
+  utter_stress_info:
+  - text: Não há problema em se sentir sobrecarregado às vezes, tente definir expectativas realistas e exercitar o gerenciamento do tempo, como dividir tarefas grandes em partes mais gerenciáveis. Técnicas de relaxamento, como respiração profunda e meditação, também podem ser benéficas
+  utter_exercicio_info:
+  - text: A maioria dos adultos saudáveis deve tentar fazer cerca de 150 minutos de exercícios moderados por semana. Isso inclui atividades como uma caminhada rápida ou trabalho no quintal.
+  utter_ask_confirm_exercise:
+  - text: Você se exercitou ontem? não se preocupe se você não correu uma maratona. Caminhar conta!
+  utter_ask_sleep:
+  - text: O quanto você dormiu na noite passada?
+  utter_ask_exercise:
+  - text: Que tipo de exercício você fez?
+  utter_ask_diet:
+  - text: Você manteve uma dieta saudável ontem?
+  utter_ask_stress:
+  - text: Seu nivel de stress está baixo, médio ou alto 🧘‍♀️?
+  utter_ask_goal:
+  - text: Definir metas - mesmo as pequenas - é uma ótima maneira de concentrar durante o seu dia. o que você deseja realizar hoje🥇?
+  utter_slots_values:
+  - text: |
+      Aqui está o seu diário de bem-estar:
+       - Se exercitou?: {confirmar_exercicio}
+       - Tipo de exercicio: {exercicio}
+       - Sono: {dormir}
+       - Fazendo uma dieta saudável?: {dieta}
+       - Nível de stress: {stress}
+       - Objetivo: {objetivo}
+  utter_no_worries:
+  - text: Sem problemas :)
+  utter_ask_continue:
+  - text: Desculpe, eu não entendi muito bem. Você quer continuar?
+
+actions:
+- form_saude
+- form_saude
+- utter_cheer_up
+- utter_did_that_help
+- utter_dieta_info
+- utter_exercicio_info
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_iamabot
+- utter_stress_info
+- action_submit_results
+
+forms:
+  form_saude:
+    required_slots:
+      confirmar_exercicio:
+      - type: from_intent
+        intent: afirmação
+        value: true
+      - type: from_intent
+        intent: negação
+        value: false
+      - type: from_intent
+        intent: informação
+        value: true
+      exercicio:
+      - type: from_entity
+        entity: exercício
+      dormir:
+      - type: from_entity
+        entity: dormir
+      - type: from_intent
+        intent: negação
+        value: None
+      dieta:
+      - type: from_text
+        intent:
+        - informação
+        - afirmação
+        - negação
+      stress:
+      - type: from_entity
+        entity: stress
+      objetivo:
+      - type: from_text
+        intent: informação

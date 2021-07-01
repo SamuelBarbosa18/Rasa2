@@ -1,0 +1,94 @@
+version: "2.0"
+
+stories:
+
+- story: Pacote Feliz
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: bom_humor
+  - action: utter_happy
+
+- story: Pacote Triste 1
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: mau_humor
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: afirmação
+  - action: utter_happy
+
+- story: Pacote Triste 2
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: mau_humor
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: negação
+  - action: utter_goodbye
+
+- story: Pesquisa Pacote Feliz
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: form_saude
+  - action: utter_slots_values
+  - intent: adeus
+  - action: utter_no_worries
+  - action: utter_goodbye 
+  
+- story: Sem Pesquisa
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: negação
+  - action: utter_goodbye
+
+- story: Dizer Adeus 
+  steps: 
+  - intent: adeus
+  - action: utter_goodbye
+
+- story: Sou um Bot
+  steps: 
+  - intent: pergunta_bot
+  - action: utter_iamabot
+
+- story: Pergunta Dieta
+  steps: 
+  - intent: pergunta_comida_saudavel 
+  - action: utter_dieta_info
+
+- story: Pergunta de Stress
+  steps: 
+  - intent: pergunta_stress_alto
+  - action: utter_stress_info 
+
+- story: Pergunta de Exercicio
+  steps: 
+  - intent: pergunta_exercicio
+  - action: utter_exercicio_info
+  
+- story: Interactive_Story_1
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: pergunta_stress_alto
+  - action: utter_stress_info
+  - intent: pergunta_comida_saudavel
+  - action: utter_dieta_info
+
+- story: Pesquisa Pacote Feliz
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: form_saude
+  - active_loop: form_saude
+  - action: utter_slots_values
+  - intent: adeus
+  - action: utter_no_worries
+  - action: utter_goodbye 

@@ -1,0 +1,89 @@
+python3 -m venv ./venv
+source ./venv/scripts/activate
+netstat -ano | findstr :5055
+taskkill /PID 10648 /F
+
+
+
+- story: Pesquisa Pacote Feliz
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: form_saude
+  - action: form{"name":"form_saude"}
+  - action: form{"name":null}
+  - action: utter_slots_values
+  - intent: adeus
+  - action: utter_no_worries
+  - action: utter_goodbye 
+
+- story: Parar Pesquisa
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: form_saude
+  - action: form{"name":"form_saude"}
+  - intent: transbordo
+  - action: utter_ask_continue
+  - intent: negação
+  - action: action_deactivate_form
+  - action: form{"name":null}
+  - action: utter_goodbye
+
+- story: Continuar Pesquisa
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: form_saude
+  - action: form{"name":"form_saude"}
+  - intent: transbordo
+  - action: utter_ask_continue
+  - intent: afirmação
+  - action: form_saude
+  - action: form{"name":null}
+  - action: utter_slots_values
+
+- story: Perguntas Formulario Questões Saudaveis
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: form_saude
+  - action: form{"name":"form_saude"}
+  - intent: pergunta_exercicio
+  - action: utter_exercicio_info
+  - action: form_saude
+  - action: form{"name":null}
+  - action: utter_goodbye
+
+class ActionSubmitResults(Action):
+    def name(self) -> Text:
+        return "action_submit_results"
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict]:
+
+        confirmar_exercicio = tracker.get_slot("confirmar_exercicio")
+        exercicio = tracker.get_slot("exercicio")
+        dormir = tracker.get_slot("dormir")
+        stress = tracker.get_slot("stress")
+        dieta = tracker.get_slot("dieta")
+        objetivo = tracker.get_slot("objetivo")
+
+        response = create_health_log(
+                confirmar_exercicio=confirmar_exercicio,
+                exercicio=exercicio,
+                dormir=dormir,
+                stress=stress,
+                dieta=dieta,
+                objetivo=objetivo
+            )
+
+        dispatcher.utter_message("Obrigado, Sua resposta foi gravada"")
+        return []
